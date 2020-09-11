@@ -36,8 +36,6 @@ class Ball {
 
     /* Notice that before this we check to see if the ball is on the ground, and if it is, set         the velocity to 0. Had we not done that, the velocity would be added here.
     */
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
     this.position.add(this.velocity);
   }
 
