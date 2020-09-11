@@ -1,5 +1,4 @@
 let GRAVITY = 9.8; // 9.8 meters / second^2
-var ballGrabbed = false;
 class Ball {
   
   // Called when we create a new ball.
@@ -16,6 +15,7 @@ class Ball {
     
     // Sets the radius of the ball.
     this.radius = radius;
+    this.grabbed = false;
   }
 
   update() {
@@ -36,10 +36,10 @@ class Ball {
 
     var mouseToBall = createVector(mouseX, mouseY);
     mouseToBall.sub(this.position);
-    if (ballGrabbed && mouseIsPressed) {
+    if (this.grabbed && mouseIsPressed) {
       this.mouseGrab()
     } else {
-      ballGrabbed = false;
+      this.grabbed = false;
     }
 
     /* Notice that before this we check to see if the ball is on the ground, and if it is, set         the velocity to 0. Had we not done that, the velocity would be added here.
@@ -88,6 +88,6 @@ function draw() {
 function mousePressed(event) {
   var mousePos = createVector(mouseX, mouseY);
   if (mousePos.dist(ball.position) < ball.radius) {
-    ballGrabbed = true;
+    ball.grabbed = true;
   }
 } 
